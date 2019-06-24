@@ -34,16 +34,15 @@ FSJS project 2 - List Filter and Pagination
 
     for ( let i = 0; i < studentList.length; i++) {                
        if(i >= startindex && i < endindex) {                      
-          studentList[i].style.display = 'block';                 
+          studentList[i].style.display = 'block';   // Show               
        } else {
-          studentList[i].style.display = 'none';                
+          studentList[i].style.display = 'none';    //  Hide          
 
    }
  };
 
 }
-     showPage(studentList, 1);
-
+    
 
 
 
@@ -53,14 +52,14 @@ FSJS project 2 - List Filter and Pagination
 
  const appendPageLinks = (studentList) => {   
 
-   let pages = Math.ceil(studentList.length/itemsPerPage);     
-   let divElement = document.createElement('div');             
-   let ulElement = document.createElement('ul');               
+   let pages = Math.ceil(studentList.length/itemsPerPage);   // I used the Maths.ceil method to deteremine number of pages 
+   let divElement = document.createElement('div');           // Created div element.  
+   let ulElement = document.createElement('ul');             //  Created ul element.
    let pageClass = document.querySelector('.page');            
    
   
-   divElement.className = 'pagination';
-   pageClass.appendChild(divElement);
+   divElement.className = 'pagination';                   
+   pageClass.appendChild(divElement);                     // appended the pageclass to 'divelement' and 'divelement' to ul element respctively.
    divElement.appendChild(ulElement);  
 
    for (let i = 1; i <= pages; i++) {
@@ -72,13 +71,14 @@ FSJS project 2 - List Filter and Pagination
       document.querySelector('.pagination a:first-child').className = "active";
 
 
-      aTag.addEventListener('click', (event) => {
+      aTag.addEventListener('click', (event) => {            // I added a 'Click' event to each 'a' Tag.
          let page = document.querySelectorAll('li a');
          let button = event.target.textContent;
          showPage (studentList, button);
 
        
-         for(i = 0; i < page.length; i++) {
+         for(i = 0; i < page.length; i++) {          // Looped over pagination links to remove active class from all links.
+        
           page[i].classList.remove("active");
          }
 
@@ -92,5 +92,5 @@ FSJS project 2 - List Filter and Pagination
  
  }
 
-   showPage(studentList, 1);
-   appendPageLinks(studentList);
+   showPage(studentList, 1);           // I called the showPage function to display the appropriate page.
+   appendPageLinks(studentList);       // Called the appendpage links to display the buttons
